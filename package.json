@@ -1,10 +1,11 @@
 {
   "name": "starwars",
   "version": "1.0.0",
-  "description": "Star Wars intro",
-  "main": "index.js",
+  "description": "Desenvolvimento da Intro do Star Wars com deploy no Azure.",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon",
+    "lint": "eslint --ext .js -f ./node_modules/eslint-friendly-formatter . --fix"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,19 @@
     "prettier": "^2.6.2"
   },
   "devDependencies": {
-    "eslint": "^8.15.0",
-    "husky": "^8.0.1"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "husky": "^3.1.0"
+  },
+  "husky": {
+    "pre-commit": "lint-staged",
+    "pre-push": "npm run lint"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
