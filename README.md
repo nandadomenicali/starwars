@@ -1,6 +1,6 @@
 # Star Wars Intro
 
-![introstarwars](video/starwars.mov)
+![introstarwars](image/starwars.gif)
 
 # Tecnologias utilizadas 🚀
 - JavaScript
