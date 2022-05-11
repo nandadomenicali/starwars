@@ -1,9 +1,10 @@
 let width = window.innerWidth
 let height = window.innerHeight
-let intro = document.getElementsByClassName('intro')[0]
-let historia = document.getElementsByClassName('historia')[0]
-let paragrafos = document.getElementsByClassName('paragrafos')[0]
-let som = document.getElementById('som')
+
+const intro = document.getElementsByClassName('intro')[0]
+const historia = document.getElementsByClassName('historia')[0]
+const paragrafos = document.getElementsByClassName('paragrafos')[0]
+const som = document.getElementById('som')
 
 intro.style.fontSize = width / 30 + 'px'
 historia.style.fontSize = width / 20 + 'px'
@@ -22,3 +23,36 @@ function play() {
   historia.className = 'historia historia_texto historia_animacao'
   som.play()
 }
+
+let canvas = document.getElementById('snow')
+const ctx = canvas.getContext('2d')
+
+canvas.width = width
+canvas.height = height
+
+const num = 100
+const size = 2
+const elements = []
+
+function inicio() {
+  for (let i = 0; i < num; i++) {
+    elements[i] = {
+      x: Math.ceil(Math.random() * width),
+      y: Math.ceil(Math.random() * height),
+      size: Math.random() * size,
+    };
+  }
+}
+
+function nevar() {
+  ctx.clearRect(0, 0, width, height)
+  for (let i = 0; i < num; i++) {
+    const e = elements[i]
+    ctx.beginPath()
+    ctx.fillStyle = '#FFFFFF'
+    ctx.arc(e.x, e.y, e.size, 0, 2 * Math.PI)
+    ctx.fill()
+  }
+}
+inicio()
+nevar()
